@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request,session,redirect,url_for
-import pymongo,random,bcrypt
+import pymongo,random,bcrypt,geocoder
 
 auth = Blueprint('auth', __name__)
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+client = pymongo.MongoClient("mongodb+srv://mmm:2003@mmm.slnz2.mongodb.net/test")
 
 #get the database name
 db  = client.get_database('total_records')
@@ -28,15 +28,19 @@ def gen_id():
     else:
         return n
 
+#sasta location
+def loc():
+    g = geocoder.ip('me')
+    return g.latlng[0],g.latlng[1]
+
 @auth.route('/sign-up/', methods = ['GET', 'POST'])
 def sign_up():
     if "user" in session:
-        return redirect(url_for('logged_in'))
+        return redirect('/logged_in')
 
     if request.method == 'POST':
         email = request.form.get('email')
-        PS_loc = request.form.get('PS_loc')
-        Pincode = request.form.get('Pincode')
+        psta = request.form.get('police station')
 
         password = request.form.get('password')
         confirm_pass = request.form.get('confirm_pass')
@@ -58,13 +62,17 @@ def sign_up():
             hashed = bcrypt.hashpw(confirm_pass.encode('utf-8'), bcrypt.gensalt())
 
             #assigning the data in a dictionary in key value pairs
-            user_input = { 'userid':UserId, 'email': email, 'password': hashed, 'PS_loc': PS_loc, 'Pincode':Pincode}
+            user_input = { 'userid':UserId, 'police station':psta, 'email': email, 'password': hashed}
             #inserting it in the record collection
             records.insert_one(user_input)
+            message = 'successfully sent :)'
+            la,lo = loc()
+            temp = 'https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&&refLocation='+str(la)+','+str(lo)+'&keywords=police'
+    
+            return render_template('sign_up.html', message = message,temp=temp)
 
-            user_data = records.find_one({"email":email})
-            new_email = user_data['email']
+    la,lo = loc()
+    temp = 'https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&&refLocation='+str(la)+','+str(lo)+'&keywords=police'
+    print(temp)
+    return render_template("sign_up.html",temp=temp)
 
-            message = 'Check your registered email'
-            return render_template('sign_up.html', message = message)
-    return render_template('sign_up.html')

@@ -4,79 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign-up page</title>
     <title>Document</title>
     <script src="https://apis.mapmyindia.com/advancedmaps/api/c01d8bea-e1ee-4ca2-a8c7-42e37494ec4a/map_sdk_plugins"></script>
     <script src="https://apis.mapmyindia.com/advancedmaps/v1/c01d8bea-e1ee-4ca2-a8c7-42e37494ec4a/map_load?v=1.5"></script>
-  </head>
+   </head>
   <body>
     {% if message %}{{message}}{% endif %}
-    <h3 align="center">Registration</h3>
-    <form action="" method = "POST">
+    <form action="" method="POST">
       <div>
-        <label for="email">Email Address</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          required
+        <label for="type">Type</label>
+        <input 
+            type="text"
+            id="type"  
+            name="type" 
+            placeholder="Type of crime" 
         />
       </div>
       <div>
-        <label for="PS_loc">Police Station:</label>
-        <input
-          type=""
-          id="PS_loc"
-          name="PS_loc"
-          placeholder="Location"
+        <label for="contact">Contact</label>
+        <input 
+            type="numbers"
+            id="contact"  
+            name="contact" 
+            placeholder="Contact number" 
         />
       </div>
       <div>
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-          />
-      </div>
-      <div>
-        <label for="confirm_pass"> Password:</label>
-        <input
-          type="password"
-          id="confirm_pass"
-          name="confirm_pass"
-          placeholder="Confirm Password"
+        <label for="desc">Description</label>
+        <input 
+            type="text"
+            id="desc"  
+            name="desc" 
+            placeholder="Tell about the crime" 
         />
       </div>
-    
-    <br>
-    <div id="list" name="list"></div>
-    <br>
-    <div>
-    
-    </div>
-    <button type="submit">Submit</button>
+        <label for="pincode">Pincode</label>
+        <input 
+            type="number"
+            id="pincode"  
+            name="pincode" 
+            placeholder="Pincode of area" 
+        />
+      </div>
+      <br>
+      <div id="list" name="list"></div>
+      <br>
+      <div>
+      
+      </div>
+      <button type="submit">Submit</button>
     </form>
 
     <button id="show">Show Police Stations Nearby</button>
     </body>
 <div>
-
-
-
-  <script>
-    let link = JSON.parse('{{ temp | tojson }}')
-    var res=MapmyIndia.nearby({hyperLink:link});
-    console.log(res);
-    a=res["data"]["length"];
-    const pstas=[];
-    for (let i = 0; i < a; i++) {
-        pstas[i]=res["data"][i]["placeName"]
-     console.log(res["data"][i]["placeName"])
-    }
-    console.log(pstas)
+    <script>
+      let link = JSON.parse('{{ temp | tojson }}')
+      var res=MapmyIndia.nearby({hyperLink:link});
+      console.log(res);
+      a=res["data"]["length"];
+      const pstas=[];
+      for (let i = 0; i < a; i++) {
+          pstas[i]=res["data"][i]["placeName"]
+       console.log(res["data"][i]["placeName"])
+      }
+      console.log(pstas)
 document.getElementById('show').onclick = function() {
 
 
@@ -99,6 +91,5 @@ label.htmlFor = "police station";
 document.getElementById("list").appendChild(label).appendChild(select);
 }
 </script>
-
   </body>
 </html>

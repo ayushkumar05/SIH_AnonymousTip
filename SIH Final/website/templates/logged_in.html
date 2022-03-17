@@ -16,8 +16,8 @@
     <section class=" flex flex-1  nunito ">
         <div class="w-2/8 sidebar bg-zinc-200 rounded-tr-lg rounded-br-lg flex flex-col justify-between items-start p-14 uppercase uppercase ">
             <div class="user flex flex-col items-center justify-center p-8 ">
-                <h3 class="m-2 ">random user</h3>
-                <p class="">designation</p>
+                <h3 class="m-2 ">{{user}}</h3>
+                <p class="">{{ps_sta}}</p>
               </div>
                   <button class="text-xl uppercase  transition duration-300 hover:scale-125 ">
                    
@@ -32,21 +32,15 @@
         </div>
        
             <div class="content flex-1 flex flex-col items-center rounded-tl rounded-bl  w-6/8 justify-center">
-                <div class=" bg-slate-200 px-2 h-auto my-8 w-5/6 rounded-lg text-ellipsis overflow-auto  flex flex-col justify-evenly items-center   "><h1 class="text-4xl my-4  ">title</h1>
-                <p class=" leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum nesciunt atque, deserunt quae rerumuis at enim tenetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapes, sit quibusdam sapiente ducimus quod soluta, eaque laudantium quam ut blanditiis similique! Molestias?</p>
+                {%for i in ar%}
+                <div class=" bg-slate-200 px-2 h-auto my-8 w-5/6 rounded-lg text-ellipsis overflow-auto  flex flex-col justify-evenly items-center   "><h1 class="text-4xl my-4  ">{{i["type"]}}</h1>
+                <p class=" leading-relaxed">{{i["contact"]}} {{i["desc"]}} {{i["psta"]}}</p>
                 <button class="uppercase  rounded-lg  btn-grad bg-emerald-400 px-4 py-2  my-2  transition duration-300 hover:scale-125"><a href="">view</a></button>
                 </div>
-                <div class=" bg-slate-200 px-2 h-auto my-8 w-5/6 rounded-lg text-ellipsis overflow-auto  flex flex-col justify-evenly items-center   "><h1 class="text-4xl my-4  ">title</h1>
-                    <p class=" leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum nesciunt atque, deserundam sapiente ducimus quod soluta, eaque laudantium quam ut blanditiis similique! Molestias?</p>
-                    <button class="uppercase  rounded-lg  btn-grad bg-emerald-400 px-4 py-2  my-2  transition duration-300 hover:scale-125"><a href="">view</a></button>
-                    </div>
-                    <div class=" bg-slate-200 px-2 h-auto my-8 w-5/6 rounded-lg text-ellipsis overflow-auto  flex flex-col justify-evenly items-center   "><h1 class="text-4xl my-4  ">title</h1>
-                        <p class=" leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum nesciunt blanditiis similique! Molestias?</p>
-                        <button class="uppercase  rounded-lg  btn-grad bg-emerald-400 px-4 py-2  my-2  transition duration-300 hover:scale-125"><a href="">view</a></button>
-                        </div>
-                
-               
-            </div>
+                {% endfor %}
+
+
+                     </div>
            
 
     </section>
