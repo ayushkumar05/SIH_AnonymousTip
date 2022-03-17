@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href=" {{url_for('static', filename='smart.css')}} ">
+    <title>Document</title>
+</head>
+<body>
+    {% if message %}{{message}}{% endif %}
+        <div class="container ">
+            <div class="scrollchild">
+                <nav class="bg-black  uppercase font-semibold flex justify-around h-16 absolute w-full z-40 border-b-2 border-neutral-700 text-slate-300 ">
+                    <h4 class="my-auto tracking-tighter opacity-60 transition duration-200 hover:scale-125"><a href="https://www.mha.gov.in/">Ministry of Home Affairs</a></h4>
+                    <ul class="flex justify-around opacity-60  w-1/6 my-auto ">
+                        <li class="transition duration-200 hover:scale-125"><a href="">ABOUT</a></li>
+                        <li class="transition duration-200 hover:scale-125"><a href="">social</a></li>
+                        <li class="transition duration-200 hover:scale-125"><a href="">timeline</a></li>
+                        
+                    </ul>
+                    <button class="uppercase  my-4 w-20 border-2  border-slate-300  hover:bg-sky-700 text-slate-300 transition duration-300 hover:scale-125" id="login" type="submit" href="/dashboard">login</button>
+                    
+
+                </nav>
+
+                <div class="bg-black z-0 ">
+                
+                        <img class=" relative z-30 grayscale brightness-60 h-screen mx-auto   " src="{{url_for('static', filename='img/emb2.png')}}" alt="">
+                    
+                </div> 
+                <div class=" absolute z-40   h-1/3 w-1/3 inset-y-64 inset-x-64  tracking-widest"><h1 class="heading ml-56 text-slate-300 font-semibold transition duration-300 hover:scale-125 mt-6">NAT</h1></div>
+                <div class="absolute  z-20 h-1/3 w-1/3 inset-y-64  my-auto right-32 font-semibold tracking-widest"><h1 class=" w-64 heading text-slate-300 transition duration-300 hover:scale-125 mt-6">GRID</h1></div>
+            
+                <div class="  z-30 absolute left-0 top-0 h-screen w-1/3 opacity-70 border-x-2  border-gray-700 flex flex-col justify-start items-center nunito pt-36" >
+                    <h2 class=" text-slate-300 text-4xl ">Lorem ipsucing elit. Fksanfuga, hic.</h2>
+                    <div class="content text-slate-300 ">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis quibusdam aut accusamus quisquam repellendus possimus ratione dolor soluta illo ipsam!</p>
+                        <button class="uppercase bg-emerald-400 px-8 py-2 mx-32 mt-64 text-xl rounded-lg transition duration-300 hover:scale-125 bg-green-100  text-gray-900 hover:bg-blue-300 border-4 border-slate-300 "><a href=""> connect</a></button>
+                        
+                    </div>
+                    
+
+                    </div>
+
+
+                </div>
+                <div class="  z-0 absolute right-0 top-0 w-1/3  right-16  h-screen opacity-70 border-x-2 border-gray-700  flex flex-col justify-center items-end social"  >
+                    
+                    <button class="text-green-100 transition duration-200 hover:scale-125 p-6"><a href=""><img class="w-12 h-12 " src="{{url_for('static', filename='img/you2.svg')}}" alt=""></a></button>
+                    <button class="text-green-100 transition duration-200 hover:scale-125 p-6"><a href=""><img class="w-12 h-12" src="{{url_for('static', filename='img/twitter2.svg')}}" alt=""></a></button>
+                    <button class="text-green-100 transition duration-200 hover:scale-125 p-6"><a href=""><img class="w-12 h-12" src="{{url_for('static', filename='img/face2.svg')}}" alt=""></a></button>
+                    <button class="text-green-100 transition duration-200 hover:sc
+                    ale-125 p-6"><a href=""><img class="w-12 h-12 rounded-full" src="{{url_for('static', filename='img/insta2.svg')}}" alt=""></a></button>   
+                  
+            </div>
+            <section class="h-screen bg-neutral-900 border-t-2 border-slate-300 scrollchild text-slate-300 flex flex-col justify-center items-center ">
+                <h1 class="  nunito text-4xl">Take a quick test</h1>
+                <p class=" text-xl nunito">This is a quick test to verify that the user is of sound mind and has good sense of reasoning. </p>
+                <button class=" bg-slate-300 rounded px-6 py-3 my-9 transition duration-300 hover:scale-125 bg:blue text-neutral-900"><a href="quiz.html">PROCEED</a></button>
+
+                
+            </section>
+            <section class="h-screen bg-black border-t-2 border-slate-300 scrollchild">
+               
+            </section>
+       </div>
+       <!-- modal section -->
+       <div class="bg-modal  w-full h-full absolute top-0 z-50  flex items-center justify-center hidden" id="modal">
+           <div class=" w-3/4 h-5/6 bg-zinc-900 rounded-lg flex  justify-between">
+                <div class="flex flex-col  items-start">
+
+            
+                        <h1 class=" p-16 uppercase login text-6xl text-slate-300">login</h1>
+                        <!--form  class="m-8" action="/" method="POST " >
+                            <div class="txt-field p-6">
+                                <input  class="w-full border-b-2 border-slate-300 text-slate-300 bg-transparent outline-0 " type="text" id= "userid" name= "userid" required placeholder="Username">
+                                 
+                            </div>
+                            <div class="txt-field p-6">
+                                <input class="w-full border-b-2 border-slate-300 text-slate-300 bg-transparent outline-0 " type="password" id = "password" name = "password" required placeholder="Password">
+                
+                                
+                            </div>
+                            <div class=" p-6">
+                                <button class="uppercase bg-slate-100 px-6 py-2 rounded transition duration-300 hover:scale-125  hover:bg-emerald-200" type="submit">Login</button>
+                            </div>
+                            <div class="flex"><h3 class="text-slate-300 p-6">trouble signing in?</h3>
+                                <button class="uppercase bg-slate-400 px-4 py-0 h-8 m-5 rounded transition duration-300 hover:scale-125  hover:bg-rose-200"><a href="">reset</a></button>
+                                
+                        
+
+                            </div>
+
+                        
+                        </form-->
+                        <form action="" method="POST">
+                            <h3 align="center">Login</h3>
+                            <div>
+                              <label for="userid">User Id: </label>
+                              <input
+                                type="text"
+                                id="userid"
+                                name="userid"
+                                placeholder="User Id"
+                              />
+                            </div>
+                            <div>
+                                <label for="password">Password:</label>
+                                <input
+                                  type="password"
+                                  id="password"
+                                  name="password"
+                                  placeholder="Password"
+                                />
+                            </div>
+                            <br>
+                            <button type="submit">Submit</button>
+                          </form>
+                
+                </div>
+                <div class="lefy-modal gradient w-4/6 rounded-tr-lg  rounded-br-lg flex justify-end  items-start">
+                    <div>
+                        
+                    </div> 
+                    <button class="transition mx-4 my-4 duration-300 hover:scale-125" id="close "><a href=""><img class="w-12 h-12 " src="{{url_for('static', filename='img/close.svg')}}" alt=""></a></button>
+                    
+                </div>
+            </div>
+
+           </div>
+
+
+               
+               
+           </div>
+          
+               <button class="bg-emerald-400 opacity-70 rounded-full w-12 h-12 fixed right-20 bottom-8 "><a href=""></a></button>
+
+           
+
+       
+</body>
+<script src="{{url_for('static', filename='smart.js')}}"></script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-up page</title>
+  </head>
+  <body>
+    {% if message %}{{message}}{% endif %}
+    <h3 align="center">Registration</h3>
+    <form action="" method = "POST">
+      <div>
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div>
+        <label for="PS_loc">Police Station:</label>
+        <input
+          type=""
+          id="PS_loc"
+          name="PS_loc"
+          placeholder="Location"
+        />
+      </div>
+      <div>
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+      </div>
+      <div>
+        <label for="confirm_pass"> Password:</label>
+        <input
+          type="password"
+          id="confirm_pass"
+          name="confirm_pass"
+          placeholder="Confirm Password"
+        />
+      </div>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
